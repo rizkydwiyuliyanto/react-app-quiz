@@ -1,9 +1,9 @@
 // const Dashboard = lazy(() => import('pages/dashboard'));
+import { Outlet } from "react-router-dom"
 import { lazy } from 'react';
 const Signin = lazy(() => import('pages/authentication/Signin'));
 const Signup = lazy(() => import('pages/authentication/Signup'));
 const DashboardAdmin = lazy(() => import('pages/admin/dashboard/Index'));
-const Master = lazy(() => import('pages/admin/master/index'));
 const SantriAdmin = lazy(() => import('pages/admin/master/data_santri'));
 const GuruAdmin = lazy(() => import('pages/admin/master/data_guru'));
 const TambahGuru = lazy(() => import('pages/admin/master/data_guru/tambah'));
@@ -29,7 +29,11 @@ const privateRoutes = {
       path: `/${rootPaths.pageRoot}/master`,
       id: 'master',
       name: 'Master',
-      element: <Master/>,
+      element: (
+        <>
+          <Outlet />
+        </>
+      ),
       children: [
         {
           path: `/${rootPaths.pageRoot}/master/data_guru`,
@@ -38,17 +42,23 @@ const privateRoutes = {
           element: <GuruAdmin />,
         },
         {
+          path: `/${rootPaths.pageRoot}/master/data_guru/tambah`,
+          id: 'tambah',
+          name: 'Tambah',
+          element: <TambahGuru />,
+        },
+        {
           path: `/${rootPaths.pageRoot}/master/data_santri`,
           id: 'data_santri',
           name: 'Data santri',
           element: <SantriAdmin />,
         },
         {
-          path: `/${rootPaths.pageRoot}/master/data_guru/tambah`,
+          path: `/${rootPaths.pageRoot}/master/data_santri/tambah`,
           id: 'tambah',
-          name: "Tambah",
-          element: <TambahGuru/>
-        }
+          name: 'Tambah',
+          element: <TambahGuru />,
+        },
       ],
     },
   ],

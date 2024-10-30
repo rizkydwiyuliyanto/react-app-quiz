@@ -1,23 +1,30 @@
-import { Box, Stack } from '@mui/material';
-import Footer from 'components/common/Footer';
-import { spacing } from 'utils/space';
+import { Button  } from '@mui/material';
+import CustomPaper from 'components/CustomPaper';
+import CustomTable from 'components/CustomTable';
+import { NavLink } from 'react-router-dom';
+import CustomContainer from 'components/CustomContainer';
+import ContentParent from 'components/ContentParent';
+import Footer from 'components/Footer';
+const Form = () => {
+  return (
+    <NavLink to={'/pages/master/data_santri/tambah'}>
+      <Button variant={'contained'}>Tambah data guru</Button>
+    </NavLink>
+  );
+};
 
 const index = () => {
   return (
     <>
-      <Stack p={spacing.padding} spacing={spacing.space} direction="column">
-        <Stack
-          width={1}
-          spacing={spacing.space}
-          direction={{ xs: 'column', sm: 'row', md: 'column', xl: 'row' }}
-        >
-            <p>Hello world</p>
-        </Stack>
-
-        <Box display={{ xs: 'none', md: 'block' }}>
-          <Footer />
-        </Box>
-      </Stack>
+      <CustomContainer>
+        <ContentParent>
+          <CustomPaper Title={'Data guru'} Form={<Form />}>
+            <CustomTable />
+          </CustomPaper>
+          {/* <Activity /> */}
+        </ContentParent>
+        <Footer />
+      </CustomContainer>
     </>
   );
 };

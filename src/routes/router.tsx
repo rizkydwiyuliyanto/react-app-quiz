@@ -97,9 +97,9 @@ const router = createBrowserRouter(
       ],
     },
   ],
-  {
-    basename: '/dnx',
-  },
+  // {
+  //   basename: '/dnx',
+  // },
 );
 
 export default router;
